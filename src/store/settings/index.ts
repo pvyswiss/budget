@@ -1,10 +1,11 @@
 import { migrateSettingsState } from './migrator';
 import { Mode, SettingsState, Theme } from './types';
-import { Storage, useStorage } from '@store/storage/useStorage.ts';
+import { useStorage } from '@store/storage/useStorage.ts';
 import { createGlobalState } from '@vueuse/core';
 import { reactive, readonly } from 'vue';
 
-const createSettingsStore = (storage?: Storage) => {
+export const useSettingsStore = createGlobalState(() => {
+  const storage = useStorage();
   const state = reactive<SettingsState>(migrateSettingsState());
 
   storage?.sync<SettingsState>({
@@ -37,6 +38,4 @@ const createSettingsStore = (storage?: Storage) => {
       state.general.carryOver = carryOver;
     }
   };
-};
-
-export const useSettingsStore = createGlobalState(() => createSettingsStore(useStorage()));
+});

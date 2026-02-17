@@ -153,7 +153,8 @@
       "retrySynchronization": "Znovu synchronizovat",
       "noBackendAttached": "Nebyl nakonfigurován backend, aplikace běží v demo režimu. Data nebudou uložena.",
       "newVersionAvailable": "Nová verze je k dispozici!",
-      "dismiss": "Zavřít"
+      "dismiss": "Zavřít",
+      "newVersionRequired": "Je vyžadována nová verze pro další používání aplikace. Obnovte prosím stránku, abyste ji aktualizovali."
     },
     "budgetPane": {
       "addGroup": "Přidat skupinu",

@@ -1,5 +1,6 @@
 <template>
   <div v-if="status" :data-testid="status.testId" :class="[$style.statusBar, $style[status.color], classes]">
+    <component :is="status.icon" size="16" />
     <h1 :class="$style.title">{{ status.title }}</h1>
     <button
       v-if="status.button && status.action"
@@ -16,14 +17,17 @@
 <script lang="ts" setup>
 import { useStorage } from '@store/storage/useStorage.ts';
 import { ClassNames } from '@utils/types.ts';
+import { RiCloudOffFill, RiGlobalOffFill, RiLoader2Fill, RiRefreshFill } from '@remixicon/vue';
 import { useLocalStorage } from '@vueuse/core';
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { Component } from 'vue';
 
 type Status = {
   title: string;
   color: 'danger' | 'warning' | 'success' | 'primary';
+  icon: Component;
   testId?: string;
   button?: string;
   action?: () => unknown;
@@ -46,6 +50,7 @@ const status = computed((): Status | undefined => {
     case 'error':
       return {
         color: 'danger',
+        icon: RiGlobalOffFill,
         testId: 'synchronization-error',
         title: t('feature.statusBar.synchronizationFailedDueToNetworkError'),
         button: t('feature.statusBar.retrySynchronization'),
@@ -54,15 +59,28 @@ const status = computed((): Status | undefined => {
     case 'retrying': {
       return {
         color: 'danger',
+        icon: RiLoader2Fill,
         testId: 'synchronization-retrying',
         title: t('feature.statusBar.retryingPleaseWait')
       };
     }
+    case 'push-failed':
+      return {
+        color: 'danger',
+        icon: RiRefreshFill,
+        testId: 'push-failed',
+        title: t('feature.statusBar.newVersionRequired'),
+        ...(needRefresh.value && {
+          button: t('navigation.update.updateApp'),
+          action: () => updateServiceWorker(true)
+        })
+      };
   }
 
   if (needRefresh.value) {
     return {
       color: 'success',
+      icon: RiRefreshFill,
       title: t('feature.statusBar.newVersionAvailable'),
       button: t('navigation.update.updateApp'),
       action: () => updateServiceWorker(true)
@@ -72,6 +90,7 @@ const status = computed((): Status | undefined => {
   if (!import.meta.env.OCULAR_GENESIS_HOST && !demoDismissed.value) {
     return {
       color: 'primary',
+      icon: RiCloudOffFill,
       title: t('feature.statusBar.noBackendAttached'),
       button: t('feature.statusBar.dismiss'),
       action: () => (demoDismissed.value = true)
@@ -84,9 +103,11 @@ const status = computed((): Status | undefined => {
 
 <style lang="scss" module>
 .statusBar {
-  text-align: center;
-  padding: 4px;
-  gap: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  gap: 6px;
   text-shadow: 0 1px 1px rgba(black, 0.5);
 
   &.danger {
@@ -138,7 +159,6 @@ const status = computed((): Status | undefined => {
   all: unset;
   text-decoration: underline;
   cursor: pointer;
-  margin-left: 4px;
 }
 
 .title,

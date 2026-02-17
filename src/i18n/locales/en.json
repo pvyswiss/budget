@@ -153,7 +153,8 @@
       "retrySynchronization": "Retry synchronization",
       "noBackendAttached": "No backend configured, running in demo mode. Data will not be saved.",
       "newVersionAvailable": "A new version is available!",
-      "dismiss": "Dismiss"
+      "dismiss": "Dismiss",
+      "newVersionRequired": "A new version is required to continue using the app. Please refresh the page to update."
     },
     "budgetPane": {
       "addGroup": "Add Group",

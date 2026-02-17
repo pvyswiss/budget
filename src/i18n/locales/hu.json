@@ -153,7 +153,8 @@
       "retrySynchronization": "Szinkronizálás újra",
       "noBackendAttached": "Nincs backend konfigurálva, demó módban fut. Az adatok nem lesznek mentve.",
       "newVersionAvailable": "A legújabb verzió elérhető!",
-      "dismiss": "Elutasítás"
+      "dismiss": "Elutasítás",
+      "newVersionRequired": "Az alkalmazás további használatához új verzió szükséges. Kérjük, frissítse az oldalt a frissítéshez."
     },
     "budgetPane": {
       "addGroup": "Csoport hozzáadása",

@@ -80,7 +80,7 @@ watch(
 );
 
 watch(status, (v) => {
-  if (v === 'authenticated' || v === 'idle') {
+  if (v === 'authenticated' || v === 'idle' || v === 'push-failed') {
     window.removeEventListener('beforeunload', preventDefault);
   } else {
     window.addEventListener('beforeunload', preventDefault);

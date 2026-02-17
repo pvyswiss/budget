@@ -1,15 +1,17 @@
-import { createClient } from '@store/genesis/genesis.sdk.ts';
+import { createClient, GenesisLoginRequest } from '@store/genesis/genesis.sdk.ts';
 import { Page, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 
 export const randomUsername = () => `e2e_${Math.random().toString(36).slice(-6)}`;
 
-export const useAdminUser = async () => {
+export const useClient = async (login: GenesisLoginRequest) => {
   const client = createClient({ baseUrl: 'http://localhost:8080' });
-  await client.login({ user: 'admin', password: 'hgEiPCZP' });
+  await client.login(login);
 
   return client;
 };
+
+export const useAdminUser = () => useClient({ user: 'admin', password: 'hgEiPCZP' });
 
 export const createNewUser = async (isAdmin = false) => {
   const client = await useAdminUser();

@@ -153,7 +153,8 @@
       "retrySynchronization": "Senkronizasyonu yeniden dene",
       "noBackendAttached": "Backend yapılandırılmadı, demo modunda çalışıyor. Veriler kaydedilmeyecek.",
       "newVersionAvailable": "Yeni bir sürüm mevcut!",
-      "dismiss": "Kapat"
+      "dismiss": "Kapat",
+      "newVersionRequired": "Uygulamayı kullanmaya devam etmek için yeni bir sürüm gereklidir. Lütfen güncellemek için sayfayı yenileyin."
     },
     "budgetPane": {
       "addGroup": "Grup Ekle",

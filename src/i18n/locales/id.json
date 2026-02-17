@@ -153,7 +153,8 @@
       "retrySynchronization": "Coba kembali sinkronisasi",
       "noBackendAttached": "Tidak ada backend yang dikonfigurasi, berjalan dalam mode demo. Data tidak akan disimpan.",
       "newVersionAvailable": "Versi baru tersedia!",
-      "dismiss": "Tutup"
+      "dismiss": "Tutup",
+      "newVersionRequired": "Versi baru diperlukan untuk terus menggunakan aplikasi. Silakan segarkan halaman untuk memperbarui."
     },
     "budgetPane": {
       "addGroup": "Tambah grup",

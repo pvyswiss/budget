@@ -153,7 +153,8 @@
       "retrySynchronization": "Tentar sincronização novamente",
       "noBackendAttached": "Nenhum backend configurado, executando em modo demo. Os dados não serão salvos.",
       "newVersionAvailable": "Uma nova versão está disponível!",
-      "dismiss": "Fechar"
+      "dismiss": "Fechar",
+      "newVersionRequired": "Uma nova versão é necessária para continuar usando o aplicativo. Por favor, atualize a página para atualizar."
     },
     "budgetPane": {
       "addGroup": "Adicionar Grupo",
